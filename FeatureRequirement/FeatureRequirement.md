@@ -82,12 +82,40 @@
         When requested by user (on demand) this engine should also collate all the portfolio info, indicators, market analyst agent response, user input and then formulate a detailed prompt for recommendation engine and             attach all the relevant portfolio data that LLM recommendation might need. Show this prompt on UI for user to review, once confirmed by user then the prompt should be passed to recommendation agent and once the              response is received then parse it into easy to digest action point and reasoning behind recommendation that user can take and show on UI.
 
     4. Recommendation Agent:
-        This agent would be passed all the relevant info and detailed prompt to work with but can also directy call MCP server, read the info on UI or call market analyst agent for further analysis and reseach but the               objective is to use the portfolio info and analyse to find new options trading opportunites (trades). These can be additinal trades if the avabilable margin allows or a recommedation to swap an existing trade if             the new trade is likely to be more profitable, less risky to beneficial in other ways. the agent must consider below when forming recommendations (so include these in prompt to agent).
+        This agent would be passed all the relevant info and detailed prompt to work with but can also directy call MCP server, read the info on UI or call market analyst agent for further analysis and reseach but the              objective is to find new options trading opportunites (trades). These can be additinal trades if the avabilable margin allows or a recommedation to swap an existing trade if the new trade is likely to be more               profitable, less risky to beneficial in other ways. 
+        the agent must consider below when forming recommendations (so include these in prompt to agent).
         - This agent needs to play the role of an experienced investment fund manager and financial advisor in options trading and equity markets and has qualification in investment and risk management strategies.
+        - The agent must look at option chain of the shortlisted stock (stocks in scope list in UI) to find the best option trades considering ROM, premium, SSR, RI etc. compare these to existing position to understand if            it's worth switching or taking additional new position.
         - Please provide clear actionable recommendations, whether trades or otherwise (recommendation that are not about trades but about balancing portfolio or reducing risk, improving ROI etc).
         - Self review the recommendations and improve iteratively if needed until satisfied.
-        - Score your recommendation based on how confident you feel about your recommendation being profitable and effective.
+        - Score your recommendation based on how confident you feel about your recommendation being profitable.
         - Please provide full reasoning and explain why something is being recommendation and what factors have you considered to arrive at the conclusion.
+
+        Sample recommendation examples:
+        example 1:
+        -----------------------------------------------------------------
+        Recomendation type: new trade (possible values : new trade, swap trade, hedge trade)
+        Trade details: take a new position by Selling 1 lot of ICICIBANK AUG 1460 PE in option price range of 16.05 - 17.10 ({stock} {month} {strike price} {put/call} suggested price range of option)
+        Confidence: 8.5/10 
+        Trade driver : 
+            - ICICI Bank posted strong financial performane {details of key financial numbers} and postivie sentiment in short to medium term as suggested by market analyst agent.
+            - Currently the portfolio has relatively less exposure to private banking sector so this will diversify the risk.
+            - The trade is offering good ROM at 17.3% also has SSR of 5.1%  offering good reward to risk.
+            - Indian banking sector to benefit from interest rate cuts expected by RBI in next meeting so overall positive sentiments for banking sector.
+        -----------------------------------------------------------------
+        
+        example 2:
+        -----------------------------------------------------------------
+        Recomendation type: swap trade (possible values : new trade, swap trade, hedge trade)
+        Trade details: take a new position by Selling 1 lot of ICICIBANK AUG 1460 PE in option price range of 16.05 - 17.10 ({stock} {month} {strike price} {put/call} suggested price range of option) and square off 1 lot           in existing open postion HDFCBANK AUG 2000 PE at the buying option price range of 50-51.00
+        Confidence: 8/10 
+        Trade driver : 
+            - ICICI Bank posted strong financial performane {details of key financial numbers} and postivie sentiment in short to medium term as suggested by market analyst agent.
+            - Currently the portfolio has relatively less exposure to private banking sector so this will diversify the risk.
+            - The new trade postion in ICICIBANK is offering good ROM at 17.3% also has SSR of 5.1% offering good reward to risk which is better than HDFCBANK ROM at 9.1%, SSR at 1.1%.
+            - HDFCBANK postion is already at profit and doesn't have much option premium (theta decay) remaining in it for the given risk.
+            - Indian banking sector to benefit from interest rate cuts expected by RBI in next meeting so overall positive sentiments for banking sector.
+        -----------------------------------------------------------------
 
 
 # Addiitional Resources to use by Market analyst agent and Recommendation agent
