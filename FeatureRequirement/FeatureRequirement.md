@@ -90,7 +90,20 @@
         - Please provide full reasoning and explain why something is being recommendation and what factors have you considered to arrive at the conclusion.
 
 
-# Addiitional Resources to use
+# Addiitional Resources to use by Market analyst agent and Recommendation agent
+
+    Financial results: 
+        - https://www.screener.in/
+    Stock intrinsive value : 
+        - https://www.smart-investing.in/
+        - https://simplywall.st/
+    Analyst ratings, key indicators and market mood:
+        - https://www.tickertape.in/stocks
+        - https://www.tickertape.in/market-mood-index
+    FII activity:
+        - https://web.stockedge.com/fii-activity
+        
+    
         
 
 
