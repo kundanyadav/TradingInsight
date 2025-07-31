@@ -4,7 +4,7 @@
     This app is for trading in Indian stock markets.
 
 
-# App components and architecture
+# Application components and architecture
     I want this app to have below key component/engines:
     1. MCP Server for interacting with Kite to get below data:
         - Portfolio information (margins, cash etc) and current positions, option chain and other trading related live data.
@@ -75,17 +75,22 @@
         
         It should also provide input mechanism for..
             - User ro provide custom prompts, this should then be passed to market analyst agent when it doing the analysis.
-            - mechanishm to set filter constraints when scouting for new opportunites. e.g. strike safety ratio (SSR) , minimum premium, minimum ROM, RI (risk indicator).
+            - Mechanishm to set filter constraints when scouting for new opportunites. e.g. strike safety ratio (SSR) , minimum premium, minimum ROM, RI (risk indicator).
+            - The stocks scope list, No agent (market analysis agent or recommendation agent) should analyse any stock that's not on this list or make any recommendation about those stocks.
             - Any other input that you feel might be important or useful.
 
         When requested by user (on demand) this engine should also collate all the portfolio info, indicators, market analyst agent response, user input and then formulate a detailed prompt for recommendation engine and             attach all the relevant portfolio data that LLM recommendation might need. Show this prompt on UI for user to review, once confirmed by user then the prompt should be passed to recommendation agent and once the              response is received then parse it into easy to digest action point and reasoning behind recommendation that user can take and show on UI.
 
     4. Recommendation Agent:
-        This agent would be passed all the relevant info and detailed prompt to work with but can also directy call MCP server, read the info on UI or call market analyst agent for further analysis and reseach but the               objective is to use the portfolio info and analyse to find new options trading opportunites (trades). these can be additinal trades if the avabilable margin allows or a recommedation to swap an existing trade if             this new trade is likely to more profitable, less risky to beneficial in other ways. the agent must consider below when forming recommendations.
-        - Please provide clear actionable recommendations, whether trades or otherwise.
+        This agent would be passed all the relevant info and detailed prompt to work with but can also directy call MCP server, read the info on UI or call market analyst agent for further analysis and reseach but the               objective is to use the portfolio info and analyse to find new options trading opportunites (trades). These can be additinal trades if the avabilable margin allows or a recommedation to swap an existing trade if             the new trade is likely to be more profitable, less risky to beneficial in other ways. the agent must consider below when forming recommendations (so include these in prompt to agent).
+        - This agent needs to play the role of an experienced investment fund manager and financial advisor in options trading and equity markets and has qualification in investment and risk management strategies.
+        - Please provide clear actionable recommendations, whether trades or otherwise (recommendation that are not about trades but about balancing portfolio or reducing risk, improving ROI etc).
         - Self review the recommendations and improve iteratively if needed until satisfied.
         - Score your recommendation based on how confident you feel about your recommendation being profitable and effective.
         - Please provide full reasoning and explain why something is being recommendation and what factors have you considered to arrive at the conclusion.
+
+
+# Addiitional Resources to use
         
 
 
