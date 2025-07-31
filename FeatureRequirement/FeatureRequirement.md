@@ -24,7 +24,7 @@
 
         --------------------------------------------
         Short-Term View (<1 Month)
-            •	Sentiment: 🟢 Cautiously Positive
+            •	Sentiment: Cautiously Positive
             •	Target Price Range: ₹1,520 – ₹1,550
             •	Time Frame: Next 2–4 weeks
             •	Confidence Score: 8.5 / 10
@@ -45,7 +45,7 @@
         ⸻
 
         Mid-Term View (1–3 Months)
-            •	Sentiment: 🟢 Moderately Positive
+            •	Sentiment: Moderately Positive
             •	Target Price Range: ₹1,570 – ₹1,620
             •	Time Frame: August to October 2025
             •	Confidence Score: 7.5 / 10
@@ -67,15 +67,26 @@
         ------------------------------------
     
     3. Orchestraton and UI Engine:
-        this needs to loadup UI on application start and pull all the info and display metrics and portfolio details on the app. It needs to show below things..
-            - Sector wise, industry wise gouping of postions with measures like, total margin, no of positions, exposure %, total ROI (premium collected divide by margin used).
-            - Position wise view of premium collected, ROI, margin used, risk (how far is spot price from current price), risk/reward (premium collected / risk), classify in risk groups.
+        This needs to loadup UI on application start and pull all the info and display metrics and portfolio details on the app. It needs to show below things..
+            - Sector, industry wise gouping of postions with measures like, total margin, no of positions, exposure %, total ROI (premium collected divide by margin used).
+            - Position wise view of premium collected, ROM (return on margin deployed as percentage of margin used), margin used, SSR (spot price minus strike price as percentage of spot price, bigger the number                           better it is), Risk indicator (indicator in 1-10 scale showing the risk based on analysis by market analyst agent, 1-minimum risk, 10-maximum risk), reward risk ratio (premium collected divide by RI),                        classify in risk groups.
             - Ability to get latest analysis by market analyst agent for each positions underlying stock on demand.
             - Also ability to get latest sector and market wise latest analysis by analyst agent, also on demand.
         
         It should also provide input mechanism for..
             - User ro provide custom prompts, this should then be passed to market analyst agent when it doing the analysis.
-            - mechanishm to set search, filter cirteria for 
+            - mechanishm to set filter constraints when scouting for new opportunites. e.g. strike safety ratio (SSR) , minimum premium, minimum ROM, RI (risk indicator).
+            - Any other input that you feel might be important or useful.
+
+        When requested by user (on demand) this engine should also collate all the portfolio info, indicators, market analyst agent response, user input and then formulate a detailed prompt for recommendation engine and             attach all the relevant portfolio data that LLM recommendation might need. Show this prompt on UI for user to review, once confirmed by user then the prompt should be passed to recommendation agent and once the              response is received then parse it into easy to digest action point and reasoning behind recommendation that user can take and show on UI.
+
+    4. Recommendation Agent:
+        This agent would be passed all the relevant info and detailed prompt to work with but can also directy call MCP server, read the info on UI or call market analyst agent for further analysis and reseach but the               objective is to use the portfolio info and analyse to find new options trading opportunites (trades). these can be additinal trades if the avabilable margin allows or a recommedation to swap an existing trade if             this new trade is likely to more profitable, less risky to beneficial in other ways. the agent must consider below when forming recommendations.
+        - Please provide clear actionable recommendations, whether trades or otherwise.
+        - Self review the recommendations and improve iteratively if needed until satisfied.
+        - Score your recommendation based on how confident you feel about your recommendation being profitable and effective.
+        - Please provide full reasoning and explain why something is being recommendation and what factors have you considered to arrive at the conclusion.
+        
 
 
 
