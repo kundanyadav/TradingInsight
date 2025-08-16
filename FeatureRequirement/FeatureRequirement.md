@@ -10,12 +10,15 @@
         - Portfolio information (margins, cash etc) and current positions, option chain and other trading related live data.
         - API's to get stock news, financial results and web search access.
     2. Market analyst agent: 
-        - This is an LLM based engine which can use MCP server to research and form a sentiment/mood (how likely is it for something to go up or down). This agent needs to take the role of a seasoned professional equity research analyst with years of experience in financial markets.
+        - This is an LLM based engine which can use MCP server to research and form a sentiment/mood (how likely is it for something to go up or down). 
+        - This agent needs to take the role of a seasoned professional equity research analyst with years of experience in financial markets.
         - It needs to be able to do the research for either a requsted stock, sector (nifty, banking, auto, IT etc) or whole market and base it's research on having a short term (less than 1 month) and medium term (1-3 months) time horizon. 
         - It should always consider wider market sentiment, stock specific and sector sentiment while forming the overall sentiment/mood.
         - while researching for any specific stock please looks at their
             - quarterly financial results and analyse them to see trend and immidiate effect also compare it to market/street expectations as this highly impacts stock movement in following few days after the results are announced. 
             - Do a web search to find relevant news on the stock, sector or news that might impact overall market.
+            - look at intrinsic value if the stock and determin if it's overvalued or undervalued.
+            - research social media for sentiments and analyst ratings.
             - consider other factors that equity analysts do for making an openion.
         - Self access your sentiment openion to improve iteratively. 
         - when returning your sentiment/mood analysis response be very clear and provide short summary and also include how confident your are in your openion/sentiment. 
@@ -122,7 +125,7 @@
 
     Financial results: 
         - https://www.screener.in/
-    Stock intrinsive value : 
+    Stock intrinsic value : 
         - https://www.smart-investing.in/
         - https://simplywall.st/
     Analyst ratings, key indicators and market mood:
@@ -130,6 +133,13 @@
         - https://www.tickertape.in/market-mood-index
     FII activity:
         - https://web.stockedge.com/fii-activity
+    KiteConnect (MCP server used KiteConnect python SDK):
+        - https://kite.trade/docs/pykiteconnect/v4/
+
+# Tech stack to use
+    pydanticAI, langgraph, streamlit, python 
+    
+
         
     
         

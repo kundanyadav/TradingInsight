@@ -56,6 +56,7 @@ alwaysApply: false
     Critical Context to Include and pass to the AI agent as part of the PRP
       - Documentation: URLs with specific sections
       - Code Examples: Real snippets from codebase
+      - Don't miss any requirements and give prompt examples for LLMs.
       - Gotchas: Library quirks, version issues
       - Patterns: Existing approaches to follow
 
@@ -82,6 +83,9 @@ alwaysApply: false
     - References existing patterns
     - Clear implementation path
     - Error handling documented
+
+4. local version control:
+   As you proceed creating files and updating/changing them please record the change log in project rool folder/localversionlog_<application name>.txt
 
     
 
